@@ -1,6 +1,5 @@
 package com.pcr.test.logmonitor;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +24,8 @@ public class App {
 	public static Properties readProps() {
 
 		Properties prop = new Properties();
-		try (InputStream input = new FileInputStream("src/main/resources/hosts.properties");) {
+		
+		try (InputStream input = App.class.getResourceAsStream("/hosts.properties");) {
 
 			prop.load(input);
 

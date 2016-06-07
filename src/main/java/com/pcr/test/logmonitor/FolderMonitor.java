@@ -50,7 +50,7 @@ public class FolderMonitor implements Runnable {
 	public void run() {
 
 		LocalDateTime now = LocalDateTime.now();
-		System.out.println("now" + now);
+		System.out.println("monitoring folder" + folder);
 		try (Stream<Path> paths = Files.walk(folder)) {
 			paths.map(e -> e.toFile())
 					.filter(e -> !e
@@ -65,6 +65,8 @@ public class FolderMonitor implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		parser.printResults();
 
 	}
 
